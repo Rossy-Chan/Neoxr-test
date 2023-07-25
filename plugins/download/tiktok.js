@@ -10,36 +10,24 @@ exports.run = {
       command
    }) => {
       try {
-         if (!args || !args[0]) return client.reply(m.chat, Func.example(isPrefix, command, 'https://vt.tiktok.com/ZS8HNgJY9/'), m)
+         if (!args || !args[0]) return client.reply(m.chat, Func.example(isPrefix, command, 'https://vm.tiktok.com/ZSLJhSBFR/'), m)
          if (!args[0].match('tiktok.com')) return client.reply(m.chat, global.status.invalid, m)
-         client.sendReact(m.chat, '🕒', m.key)
+         client.sendReact(m.chat, '💛', m.key)
          let old = new Date()
-         let json = await Func.fetchJson(API('alya', '/api/tiktok', { url: Func.ttFixed(args[0]) }, 'apikey'))
-         if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
          if (command == 'tiktok' || command == 'tt') {
-         let teks = `乂  *T I K T O K*\n\n`
-         teks += '	◦  *Author* : ' + json.author.nickname + '\n'
-         teks += '	◦  *Views* : ' + json.stats.views + '\n'
-         teks += '	◦  *Likes* : ' + json.stats.likes + '\n'
-         teks += '	◦  *Dishare* : ' + json.stats.share + '\n'
-         teks += '	◦  *Comment* : ' + json.stats.comment + '\n'
-         teks += '	◦  *Uploaded* : ' + json.taken_at + '\n'
-         teks += '	◦  *Captions* : ' + json.title + '\n\n'
-         teks += global.footer
-         client.sendFile(m.chat, json.data.video_nowm, '', teks, m)
-         } else if (command == 'tikwm') {
-         let teks = `乂  *T I K T O K*\n\n`
-         teks += '	◦  *Author* : ' + json.author.nickname + '\n'
-         teks += '	◦  *Views* : ' + json.stats.views + '\n'
-         teks += '	◦  *Likes* : ' + json.stats.likes + '\n'
-         teks += '	◦  *Dishare* : ' + json.stats.share + '\n'
-         teks += '	◦  *Comment* : ' + json.stats.comment + '\n'
-         teks += '	◦  *Uploaded* : ' + json.taken_at + '\n'
-         teks += '	◦  *Captions* : ' + json.title + '\n\n'
-         teks += global.footer            
-         client.sendFile(m.chat, json.data.video_wm, '', teks, m)
-         } else if (command == 'tikmp3') {
-         return client.sendFile(m.chat, json.data.music, 'audio.mp3', '', m)
+           let json = await Api.tiktok(Func.ttFixed(args[0]))
+           if (json.code !== 0) return client.reply(m.chat, global.status.fail, m)
+           client.sendFile(m.chat, json.data.play, json.data.title +'.mp4', `🍟 *Fetching* : ${((new Date - old) * 1)} ms`, m)
+         }
+         if (command == 'tikwm') {
+           const json = await Api.tiktok(Func.ttFixed(args[0]))
+           if (json.code !== 0) return client.reply(m.chat, global.status.fail, m)
+           client.sendFile(m.chat, json.data.wmplay, json.data.title+'.mp4', `🍟 *Fetching* : ${((new Date - old) * 1)} ms`, m)
+         }
+         if (command == 'tikmp3') {
+           const json = await Api.tiktok(Func.ttFixed(args[0]))
+           if (json.code !== 0) return client.reply(m.chat, global.status.fail, m)
+           client.sendFile(m.chat, json.data.play, json.data.title+'.mp3', `🍟 *Fetching* : ${((new Date - old) * 1)} ms`, m)
          }
       } catch (e) {
          console.log(e)
