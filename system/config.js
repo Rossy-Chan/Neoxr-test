@@ -1,17 +1,12 @@
 const { Function, Scraper } = new (require('@neoxr/neoxr-js'))
-//Apikey system
-global.APIs = {
-alya: 'https://api.alyachan.online', // website api entire bot feature
-apikey: 'YOUR_KEY' // fill with your apikey, don't have apikey? registered https://api.alyachan.online/login
-}
 // Owner number
-global.owner = '6285815700861'
+global.owner = '94759874797'
 // Owner name
-global.owner_name = 'Alya uhuy'
+global.owner_name = 'ayodya'
 // Database name (Default: database)
 global.database = 'database'
 // Maximum upload file size limit (Default : 100 MB)
-global.max_upload = 50
+global.max_upload = 100
 // Delay for spamming protection (Default : 3 seconds)
 global.cooldown = 3
 // User Limitation (Default : 25)
@@ -21,17 +16,17 @@ global.timer = 1800000
 // Symbols that are excluded when adding a prefix (Don't change it)
 global.evaluate_chars = ['=>', '~>', '<', '>', '$']
 // Country code that will be automatically blocked by the system, when sending messages in private chat
-global.blocks = ['91', '92', '94', '212']
+global.blocks = ['62', '91', '1', '212']
 // Put target jid to forward friends story
 global.forwards = global.owner + '@c.us'
 // Timezone (Default : Asia/Jakarta)
 global.timezone = 'Asia/Jakarta'
 // Bot version
-global.version = '3.3.0',
+global.version = '1.0.0',
 // Bot name
-global.botname = `© alya-bot v${global.version} (Public Bot)`
+global.botname = `© rexha-bot v${global.version} (Public Bot)`
 // Footer text
-global.footer = 'ꜱɪᴍᴘʟᴇ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴍᴀᴅᴇ ʙʏ ᴀʟʏᴀ ッ'
+global.footer = 'simple whatsapp bot made for love ッ'
 // Scraper
 global.scrap = Scraper
 // Function
